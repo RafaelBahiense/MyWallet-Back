@@ -1,9 +1,17 @@
 import express from 'express';
 
-const routes = express.Router();
+import getHistory from "../controllers/history";
+import deposit from "../controllers/deposit";
+import withdrawal from "../controllers/withdrawal";
 
-routes.get("/test", (req, res) => {
-    res.sendStatus(200);
-})
+const router = express.Router();
 
-export default routes;
+router.get("/history", (req, res) => getHistory(req, res))
+
+router.post("/deposit", (req, res) => deposit(req, res))
+
+router.post("/withdrawal", (req, res) => withdrawal(req, res))
+
+router.use((req, res) => res.send('404: Page not found'))
+
+export default router;
