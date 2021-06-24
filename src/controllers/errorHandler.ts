@@ -3,9 +3,8 @@ import {Response} from "express";
 import {CustomError} from "./types";
 
 export default function errorHandler(error: CustomError, res: Response) {
-    //console.log(error)
+    console.log(error)
     if(!error.hasOwnProperty("details")) {
-        console.log("elp")
         error = new CustomError(error['routine']);
     }
     console.log(error);
@@ -17,16 +16,17 @@ export default function errorHandler(error: CustomError, res: Response) {
         case 'number.min':
         case "date.base":
         case "DateTimeParseError":
-            res.sendStatus(400);
+        case 'string.email':
+            res.status(400).send(error.details[0].message);
             break;
         case "not found":
-            res.sendStatus(404);
+            res.status(404).send(error.details[0].message);
             break;
         case "existent":
-            res.sendStatus(409);
+            res.status(409).send(error.details[0].message);
             break;
         default:
-            res.sendStatus(500);
+            res.status(500).send(error.details[0].message);
             break;
     }
 }

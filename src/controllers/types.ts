@@ -1,13 +1,15 @@
 interface Details {
     type: string;
+    message: string;
 }
 
 export class CustomError {
     details: Details[];
-    constructor(type: string){
+    constructor(type: string, message: string = "error"){
         this.details = [
             {
-                type
+                type,
+                message
             }
         ]
     }  
