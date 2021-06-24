@@ -19,5 +19,4 @@ export default async function addTransaction(req: Request, res: Response, type: 
     } catch (e) {
         errorHandler(e,res);
     }
-
 }

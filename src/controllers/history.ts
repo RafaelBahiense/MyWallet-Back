@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import dayjs from "dayjs";
 
 import {connectionDB} from "../config/database";
 import {Token} from "../schemas/schemas";
@@ -13,8 +14,11 @@ export default async function getHistory(req: Request, res: Response) {
         if(result?.rowCount === 0) throw new CustomError("Unauthorized");
         const { userId } = result.rows[0]
         result = await connectionDB.query(`SELECT * FROM transactions WHERE "userId" = $1`, [userId]);
-        console.log(result.rows);
-        res.status(200).send(result.rows);
+        const cleanResults = result.rows.map((transaction) => {
+                                                                transaction.date = dayjs(transaction.date).format("DD/MM");
+                                                                return transaction;
+                                            });
+        res.status(200).send(cleanResults);
     } catch (e) {
         errorHandler(e,res);
     }
