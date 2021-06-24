@@ -14,7 +14,7 @@ export default async function register(req: Request, res: Response) {
         if(result.rowCount > 0) throw new CustomError("existent");
         const passwordHash = bcrypt.hashSync(password, 12);
         await connectionDB.query(`INSERT INTO users (name,email,password) VALUES ($1,$2,$3)`, [name,email,passwordHash]);
-        res.sendStatus(200); 
+        res.sendStatus(201); 
     } catch (e) {
         errorHandler(e,res);
     }

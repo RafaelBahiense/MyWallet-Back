@@ -19,6 +19,10 @@ export default function errorHandler(error: CustomError, res: Response) {
         case 'string.email':
             res.status(400).send(error.details[0].message);
             break;
+        case 'string.guid':
+        case "Unauthorized":
+            res.status(401).send(error.details[0].message);
+            break;
         case "not found":
             res.status(404).send(error.details[0].message);
             break;

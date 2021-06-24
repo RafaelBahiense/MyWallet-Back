@@ -10,3 +10,10 @@ export const Login = Joi.object({
     email: Joi.string().email().required(),
     password: Joi.string().min(8).max(100).required()
 })
+
+export const Token = Joi.string().guid({ version : 'uuidv4' });
+
+export const Deposit = Joi.object({
+    description: Joi.string().min(3).required(),
+    value: Joi.number().required()
+})
