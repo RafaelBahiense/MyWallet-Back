@@ -5,7 +5,7 @@ import {CustomError} from "./types";
 export default function errorHandler(error: CustomError, res: Response) {
     console.log(error)
     if(!error.hasOwnProperty("details")) {
-        error = new CustomError(error['routine']);
+        error = new CustomError(error);
     }
     console.log(error);
     switch (error.details[0].type) {

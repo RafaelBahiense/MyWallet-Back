@@ -5,7 +5,7 @@ interface Details {
 
 export class CustomError {
     details: Details[];
-    constructor(type: string, message: string = "error"){
+    constructor(type: any, message: string = "error"){
         this.details = [
             {
                 type,

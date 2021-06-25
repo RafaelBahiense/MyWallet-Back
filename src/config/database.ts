@@ -1,7 +1,8 @@
 import dotenv from 'dotenv';
 import pg from 'pg';
 
-dotenv.config({ path: __dirname+'/./../../.env' });
+const path = process.env?.NODE_ENV === "test" ? '/./../../.env.test.local' : '/./../../.env'
+dotenv.config({ path: __dirname + path })
 const {DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE, DB_PORT} = process.env;
 
 const { Pool } = pg;

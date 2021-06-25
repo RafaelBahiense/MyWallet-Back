@@ -8,8 +8,6 @@ import logout from "../controllers/logout";
 
 const router = express.Router();
 
-export const history: any = [];
-
 router.get("/history", (req, res) => getHistory(req, res))
 
 router.post("/deposit", (req, res) => addTransaction(req, res, "deposit"))
