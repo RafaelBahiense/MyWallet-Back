@@ -16,6 +16,7 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/*"],
-  "exclude": ["node_modules"]
+  "typeAcquisition": { "include": ["jest"] },
+  "include": ["src/*","test/*"],
+  "exclude": ["node_modules", "build"]
 }

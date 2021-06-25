@@ -13,6 +13,7 @@ export default function errorHandler(error: CustomError, res: Response) {
         case "string.empty":
         case 'string.min':
         case 'string.length':
+        case 'string.base':
         case 'number.min':
         case "date.base":
         case "DateTimeParseError":
