@@ -1,16 +1,16 @@
 interface Details {
-    type: string;
-    message: string;
+  type: string;
+  message: string;
 }
 
 export class CustomError {
-    details: Details[];
-    constructor(type: any, message: string = "error"){
-        this.details = [
-            {
-                type,
-                message
-            }
-        ]
-    }  
+  details: Details[];
+  constructor(type: any, message: string = "error") {
+    this.details = [
+      {
+        type,
+        message,
+      },
+    ];
+  }
 }

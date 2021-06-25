@@ -24,17 +24,22 @@ export default async function getHistory(req: Request, res: Response) {
       [userId]
     );
     let depositsTotal = 0;
-    let withdrawalTotal = 0;       
+    let withdrawalTotal = 0;
     const cleanResults = result.rows.map((transaction) => {
       transaction.date = dayjs(transaction.date).format("DD/MM");
-      if(transaction.type === "deposit") {
-          depositsTotal += transaction.value;
+      if (transaction.type === "deposit") {
+        depositsTotal += transaction.value;
       } else {
-          withdrawalTotal += transaction.value
+        withdrawalTotal += transaction.value;
       }
       return transaction;
     });
-    res.status(200).send({transactions: cleanResults, total: depositsTotal - withdrawalTotal});
+    res
+      .status(200)
+      .send({
+        transactions: cleanResults,
+        total: depositsTotal - withdrawalTotal,
+      });
   } catch (e) {
     errorHandler(e, res);
   }
