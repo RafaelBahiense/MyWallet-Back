@@ -1,8 +1,0 @@
-CREATE TABLE "transactions" (
-  "id" SERIAL PRIMARY KEY,
-  "userId" INTEGER NOT NULL,
-  "description" TEXT NOT NULL,
-  "date" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  "type" TEXT NOT NULL,
-  "value" INTEGER NOT NULL
-);
