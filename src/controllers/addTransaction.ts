@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { connectionDB } from "../config/database";
+import connectionDB from "../config/database";
 import { Deposit, Token } from "../schemas/schemas";
 import errorHandler from "./errorHandler";
 import { CustomError } from "./types";
