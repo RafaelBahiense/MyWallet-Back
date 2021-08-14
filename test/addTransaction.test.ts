@@ -1,6 +1,7 @@
+import "../src/config/env";
 import app from "../src/app";
 import supertest from "supertest";
-import { connectionDB } from "../src/config/database";
+import connectionDB from "../src/config/database";
 // Jest   | jest@jest.com    | $2b$12$4iSzSqv3Cb8KsewVXCfyyu5BZOzEq2CaDh2eTHni75z/ZLvT7suuC | dd848b92-4990-48f7-a4d5-77f133eafea6
 
 beforeAll(async () => {

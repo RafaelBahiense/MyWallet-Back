@@ -1,6 +1,7 @@
+import "../src/config/env";
 import app from "../src/app";
 import supertest from "supertest";
-import { connectionDB } from "../src/config/database";
+import connectionDB from "../src/config/database";
 
 describe("POST /api/register", () => {
   it("returns status 400 for invalid name", async () => {
@@ -40,23 +41,19 @@ describe("POST /api/register", () => {
     expect(result.status).toEqual(400);
   });
   it("returns status 201 for valid params", async () => {
-    const result = await supertest(app)
-      .post("/api/register")
-      .send({
-        name: "NewJest",
-        email: "newjest@jest.br",
-        password: "12345678",
-      });
+    const result = await supertest(app).post("/api/register").send({
+      name: "NewJest",
+      email: "newjest@jest.br",
+      password: "12345678",
+    });
     expect(result.status).toEqual(201);
   });
   it("returns status 409 for existent params", async () => {
-    const result = await supertest(app)
-      .post("/api/register")
-      .send({
-        name: "NewJest",
-        email: "newjest@jest.br",
-        password: "12345678",
-      });
+    const result = await supertest(app).post("/api/register").send({
+      name: "NewJest",
+      email: "newjest@jest.br",
+      password: "12345678",
+    });
     expect(result.status).toEqual(409);
   });
 });
