@@ -32,10 +32,6 @@ This is an web application which helps people meet their life goals through the 
 |Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine|Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications|TypeScript is an open-source language which builds on JavaScript, one of the world’s most used tools, by adding static type definitions|PostgreSQL is a powerful, open source object-relational database|
 
 
-[html]: https://www.w3schools.com/html/
-[css]: https://www.w3schools.com/css/
-[es6]: https://262.ecma-international.org/6.0/
-[react]: https://reactjs.org/
 [node]: https://nodejs.org/en/
 [express]: https://expressjs.com/
 [typescript]: https://www.typescriptlang.org/
