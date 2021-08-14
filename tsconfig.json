@@ -1,22 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "lib": ["DOM", "ES2016"],
-    "allowJs": true,
-    "checkJs": true,
-    "sourceMap": true,
-    "outDir": "./build",
-    "removeComments": true,
+    "outDir": "./dist",
     "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
+    "importHelpers": true,
+    "removeComments": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "ES5"
   },
-  "typeAcquisition": { "include": ["jest"] },
-  "include": ["src/*","test/*"],
-  "exclude": ["node_modules", "build"]
+  "include": ["src/*"]
 }

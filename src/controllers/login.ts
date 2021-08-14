@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 
-import { connectionDB } from "../config/database";
+import connectionDB from "../config/database";
 import { Login } from "../schemas/schemas";
 import errorHandler from "./errorHandler";
 import { CustomError } from "./types";

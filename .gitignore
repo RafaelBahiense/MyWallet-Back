@@ -11,10 +11,13 @@
 /db
 
 # production
-/build
+/dist
 
 # misc
 .DS_Store
+.env.development.local
+local.dev.env
+local.test.env
 .env
 .env.local
 .env.development.local

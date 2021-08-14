@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import dayjs from "dayjs";
 
-import { connectionDB } from "../config/database";
+import connectionDB from "../config/database";
 import { Token } from "../schemas/schemas";
 import errorHandler from "./errorHandler";
 import { CustomError } from "./types";
@@ -34,12 +34,10 @@ export default async function getHistory(req: Request, res: Response) {
       }
       return transaction;
     });
-    res
-      .status(200)
-      .send({
-        transactions: cleanResults,
-        total: depositsTotal - withdrawalTotal,
-      });
+    res.status(200).send({
+      transactions: cleanResults,
+      total: depositsTotal - withdrawalTotal,
+    });
   } catch (e) {
     errorHandler(e, res);
   }

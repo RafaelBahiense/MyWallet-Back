@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 
-import { connectionDB } from "../config/database";
+import connectionDB from "../config/database";
 import { Register } from "../schemas/schemas";
 import errorHandler from "./errorHandler";
 import { CustomError } from "./types";

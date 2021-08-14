@@ -1,19 +1,32 @@
-import dotenv from "dotenv";
 import pg from "pg";
 
-const path =
-  process.env?.NODE_ENV === "test"
-    ? "/./../../.env.test.local"
-    : "/./../../.env";
-dotenv.config({ path: __dirname + path });
-const { DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE, DB_PORT } = process.env;
+const {
+  NODE_ENV,
+  DB_HOST,
+  DB_USERNAME,
+  DB_PASSWORD,
+  DB_DATABASE,
+  DB_PORT,
+  DATABASE_URL,
+} = process.env;
 
 const { Pool } = pg;
 
-export const connectionDB = new Pool({
-  user: DB_USERNAME,
-  host: DB_HOST,
-  port: DB_PORT as unknown as number,
-  database: DB_DATABASE,
-  password: DB_PASSWORD,
-});
+const connectionDB = new Pool(
+  NODE_ENV === "development" || NODE_ENV === "test"
+    ? {
+        user: DB_USERNAME,
+        host: DB_HOST,
+        port: parseInt(DB_PORT || "5432"),
+        database: DB_DATABASE,
+        password: DB_PASSWORD,
+      }
+    : {
+        connectionString: DATABASE_URL,
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      }
+);
+
+export default connectionDB;

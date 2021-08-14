@@ -1,12 +1,9 @@
-import dotenv from "dotenv";
-
+import "./config/env";
 import app from "./app";
 
-const dev = process.env?.NODE_ENV === "development" ? " on Dev mode" : "";
+const { NODE_ENV, PORT } = process.env;
+const dev = NODE_ENV === "development" ? " on Dev mode" : "";
 
-dotenv.config({ path: __dirname + "/./../.env" });
-const PORT = process.env.PORT || 4000;
-
-app.listen(PORT, function () {
+app.listen(parseInt(PORT || "4000"), () => {
   console.log(`Server runing on port ${PORT + dev}`);
 });
